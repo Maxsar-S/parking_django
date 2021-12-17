@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a style="color: grey" href="{% url 'editing' %}">
+                        назад
+</a>
+<h1>Места</h1>
+<table id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        {% for space in object_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'spaces-update' space.id %}">
+                        {{ space.id }}
+                    </a>
+                </td>
+                <td>{{ space.name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'spaces-create' %}">
+    <button>Создать место</button>
+</a>
+
+</body>
+</html>

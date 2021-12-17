@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a style="color: grey" href="{% url 'editing' %}">
+                        назад
+</a>
+<h1>Бронирования</h1>
+<table id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Место</th>
+            <th>Пользователь</th>
+            <th>Старт</th>
+            <th>Окончание</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Место</th>
+            <th>Пользователь</th>
+            <th>Старт</th>
+            <th>Окончание</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        {% for reservation in object_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'reservations-update' reservation.id %}">
+                        {{ reservation.id }}
+                    </a>
+                </td>
+                <td>{{ reservation.space }}</td>
+                <td>{{ reservation.user }}</td>
+                <td>{{ reservation.start|date:'G:i:s'  }}</td>
+                <td>{{ reservation.end|date:'G:i:s' }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'reservations-create' %}">
+    <button>Создать бронирование</button>
+</a>
+
+</body>
+</html>

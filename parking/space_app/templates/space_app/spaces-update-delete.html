@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Редактирование места | {{ space.id }}</h1>
+    <form action="{% url 'spaces-update' space.id %}" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.name.id_for_label }}">Название</label>
+            {{ form.name }}
+        </div>
+        <div>
+            <input type="submit" value="Сохранить">
+        </div>
+    </form>
+    <form action="{% url 'spaces-remove' space.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+    </form>
+
+</body>
+</html>

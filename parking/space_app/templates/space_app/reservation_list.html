@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    Здравствуйте, {{ user.username }}
+    <br>
+    Свободные интервалы на {{ today|date:'j F' }}
+
+    {% for space_name, value in obj_dict.items %}
+        <h1>{{ space_name }}</h1>
+        {% for reservation_time in value %}
+            <button><a style="text-decoration: none" href="{% url 'approving' space_name reservation_time %}">
+                        {{ reservation_time }}
+            </a></button>
+        {% endfor %}
+        <br>
+    {% endfor %}
+    <a href="{% url 'logout' %}">Выйти</a>
+    <br>
+    {% if user.position == 'M' %}
+        <a href="{% url 'editing' %}">Страница редактирования</a>
+    {% endif %}
+</body>
+</html>

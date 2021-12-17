@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Редактирование бронирования | {{ reservation.id }}</h1>
+    <form action="{% url 'reservations-update' reservation.id %}" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.space.id_for_label }}">Место</label>
+            {{ form.space }}
+        </div>
+        <div>
+            <label for="{{ form.user.id_for_label }}">Пользователь</label>
+            {{ form.user }}
+        </div>
+        <div>
+            <label for="{{ form.start.id_for_label }}">Время начала</label>
+            {{ form.start }}
+        </div>
+        <div>
+            <label for="{{ form.end.id_for_label }}">Время конца</label>
+            {{ form.end }}
+        </div>
+
+        </div>
+        <div>
+            <input type="submit" value="Сохранить">
+        </div>
+    </form>
+    <form action="{% url 'reservations-remove' reservation.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+    </form>
+</body>
+</html>

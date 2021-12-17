@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h3>{{ reservation.user }}, Вы успешно забронировали</h3>
+    <h3>Парковочное место номер {{ reservation.space }}</h3>
+    <h3>В интервале:</h3>
+    <h3>{{ reservation.start|date:'G:i:s' }} -
+        {{ reservation.end|date:'G:i:s' }}</h3>
+    <h3>Номер вашего бронирования {{ reservation.id }}</h3>
+    <a style="color: grey" href="{% url 'reserving' %}">
+                            назад
+    </a>
+</body>
+</html>

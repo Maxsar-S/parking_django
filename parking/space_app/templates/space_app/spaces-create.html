@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Создание места</h1>
+    <form action="{% url 'spaces-create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.name.id_for_label }}">Название</label>
+            {{ form.name }}
+        </div>
+        <div>
+            <input type="submit" value="Сохранить">
+        </div>
+    </form>
+</body>
+</html>
